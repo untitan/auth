@@ -1,5 +1,6 @@
 package cn.t1tan.auth.comm;
 
+import cn.t1tan.auth.enums.AuthReason;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,14 +13,14 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class AuthProcessException extends RuntimeException {
 
-	private String reasonCode;
+	private AuthReason authReason;
 
-	public AuthProcessException(String reasonCode) {
-		this.reasonCode = reasonCode;
+	public AuthProcessException(AuthReason reasonCode) {
+		this.authReason = reasonCode;
 	}
 
-	public AuthProcessException(String reasonCode, String desc) {
+	public AuthProcessException(AuthReason reasonCode, String desc) {
 		super(desc);
-		this.reasonCode = reasonCode;
+		this.authReason = reasonCode;
 	}
 }

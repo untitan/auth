@@ -20,6 +20,6 @@ public class AuthUtil {
 	 * @throws AuthProcessException
 	 */
 	public static void throwAuthException(AuthReason reason, String desc) throws AuthProcessException {
-		throw new AuthProcessException(reason.name(), desc);
+		throw new AuthProcessException(reason, desc);
 	}
 }

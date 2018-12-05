@@ -29,13 +29,9 @@ public class AuthContext extends AuthMessage {
 
 	List<String> checkerList = new ArrayList<>();
 	List<String> checkPointList = new ArrayList<>();
+
 	Map<AuthReason, String> authReasonMap = new HashMap<>();
 
-	/**
-	 * 设置返回码
-	 *
-	 * @param reason
-	 */
 	public void putAuthReason(AuthReason reason) {
 		this.finalAuthReason = reason;
 		this.finalRespCode = reason.getRespCode();

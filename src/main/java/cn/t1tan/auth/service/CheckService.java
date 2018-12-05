@@ -1,11 +1,12 @@
 package cn.t1tan.auth.service;
 
 import cn.t1tan.auth.checker.IAuthChecker;
-import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.comm.AuthConstants;
 import cn.t1tan.auth.comm.AuthContext;
+import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.enums.AuthAction;
 import cn.t1tan.auth.enums.AuthReason;
+import cn.t1tan.auth.utils.AuthUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,7 +127,7 @@ public class CheckService {
 		if (context.getFinalAuthReason().getAction() == AuthAction.Approve) {
 			log.info("交易检查通过");
 		} else {
-			throw new AuthProcessException("交易检查拒绝");
+			AuthUtil.throwAuthException(AuthReason.R005, "交易检查拒绝");
 		}
 	}
 }

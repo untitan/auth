@@ -1,8 +1,9 @@
 package cn.t1tan.auth.service;
 
 import cn.t1tan.auth.comm.AuthContext;
-import cn.t1tan.auth.comm.AuthProcessException;
+import cn.t1tan.auth.enums.AuthReason;
 import cn.t1tan.auth.txn.ITxnHandler;
+import cn.t1tan.auth.utils.AuthUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,10 @@ public class TxnService {
 		log.info("交易方向:{}", context.getTxnDirection());
 
 		if (StringUtils.isBlank(context.getTxnCode())) {
-			throw new AuthProcessException("交易代码为空");
+			AuthUtil.throwAuthException(AuthReason.R005, "交易代码为空");
 		}
 		if (!txnHandlerMap.containsKey(context.getTxnCode())) {
-			throw new AuthProcessException("交易代码处理器未找到");
+			AuthUtil.throwAuthException(AuthReason.R005, "交易代码处理器未找到");
 		}
 	}
 

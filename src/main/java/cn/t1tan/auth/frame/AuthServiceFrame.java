@@ -1,7 +1,7 @@
 package cn.t1tan.auth.frame;
 
-import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.comm.AuthContext;
+import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.enums.Channel;
 import cn.t1tan.auth.service.AuthService;
 import cn.t1tan.auth.service.CheckService;
@@ -45,6 +45,7 @@ public class AuthServiceFrame {
 		AuthContext context = new AuthContext(message);
 
 		try {
+			// todo 暂定cup
 			context.setChannel(Channel.Cup);
 
 			log.info("# 1、授权流水登记");
@@ -82,11 +83,12 @@ public class AuthServiceFrame {
 			log.info("# 11、组装返回报文");
 			messageService.genResponseMessage(context);
 
-			//		log.info("4、RTDS侦测");
-			//		log.info("5、v+服务");
-			//		log.info("6、ISC信息交换");
+			//log.info("4、RTDS侦测");
+			//log.info("5、v+服务");
+			//log.info("6、ISC信息交换");
 		} catch (AuthProcessException excetion) {
-			log.warn(excetion.getReasonCode());
+			log.warn("交易失败:{}-{}", excetion.getAuthReason(), excetion.getMessage());
+			context.putAuthReason(excetion.getAuthReason());
 			messageService.genResponseMessage(context);
 		}
 
