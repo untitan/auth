@@ -1,6 +1,6 @@
 package cn.t1tan.auth.frame;
 
-import cn.t1tan.auth.comm.AuthBizException;
+import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.comm.AuthContext;
 import cn.t1tan.auth.enums.Channel;
 import cn.t1tan.auth.service.AuthService;
@@ -85,7 +85,7 @@ public class AuthServiceFrame {
 			//		log.info("4、RTDS侦测");
 			//		log.info("5、v+服务");
 			//		log.info("6、ISC信息交换");
-		} catch (AuthBizException excetion) {
+		} catch (AuthProcessException excetion) {
 			log.warn(excetion.getReasonCode());
 			messageService.genResponseMessage(context);
 		}

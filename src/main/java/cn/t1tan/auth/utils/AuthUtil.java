@@ -1,6 +1,6 @@
 package cn.t1tan.auth.utils;
 
-import cn.t1tan.auth.comm.AuthBizException;
+import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.enums.AuthReason;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,9 +17,9 @@ public class AuthUtil {
 	 *
 	 * @param reason
 	 * @param desc
-	 * @throws AuthBizException
+	 * @throws AuthProcessException
 	 */
-	public static void throwAuthException(AuthReason reason, String desc) throws AuthBizException {
-		throw new AuthBizException(reason.name(), desc);
+	public static void throwAuthException(AuthReason reason, String desc) throws AuthProcessException {
+		throw new AuthProcessException(reason.name(), desc);
 	}
 }

@@ -10,7 +10,7 @@ import java.util.*;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class AuthContext extends Message {
+public class AuthContext extends AuthMessage {
 
 	public AuthContext(Map<String, Object> message) {
 		super(message);

@@ -1,7 +1,7 @@
 package cn.t1tan.auth.service;
 
-import cn.t1tan.auth.comm.AuthBizException;
 import cn.t1tan.auth.comm.AuthContext;
+import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.txn.ITxnHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -39,7 +39,10 @@ public class TxnService {
 		log.info("交易方向:{}", context.getTxnDirection());
 
 		if (StringUtils.isBlank(context.getTxnCode())) {
-			throw new AuthBizException("交易代码为空");
+			throw new AuthProcessException("交易代码为空");
+		}
+		if (!txnHandlerMap.containsKey(context.getTxnCode())) {
+			throw new AuthProcessException("交易代码处理器未找到");
 		}
 	}
 

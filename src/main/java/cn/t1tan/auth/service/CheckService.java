@@ -1,7 +1,7 @@
 package cn.t1tan.auth.service;
 
 import cn.t1tan.auth.checker.IAuthChecker;
-import cn.t1tan.auth.comm.AuthBizException;
+import cn.t1tan.auth.comm.AuthProcessException;
 import cn.t1tan.auth.comm.AuthConstants;
 import cn.t1tan.auth.comm.AuthContext;
 import cn.t1tan.auth.enums.AuthAction;
@@ -126,7 +126,7 @@ public class CheckService {
 		if (context.getFinalAuthReason().getAction() == AuthAction.Approve) {
 			log.info("交易检查通过");
 		} else {
-			throw new AuthBizException("交易检查拒绝");
+			throw new AuthProcessException("交易检查拒绝");
 		}
 	}
 }

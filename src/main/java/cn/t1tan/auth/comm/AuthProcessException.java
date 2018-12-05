@@ -10,15 +10,15 @@ import lombok.EqualsAndHashCode;
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class AuthBizException extends RuntimeException {
+public class AuthProcessException extends RuntimeException {
 
 	private String reasonCode;
 
-	public AuthBizException(String reasonCode) {
+	public AuthProcessException(String reasonCode) {
 		this.reasonCode = reasonCode;
 	}
 
-	public AuthBizException(String reasonCode, String desc) {
+	public AuthProcessException(String reasonCode, String desc) {
 		super(desc);
 		this.reasonCode = reasonCode;
 	}

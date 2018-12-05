@@ -1,7 +1,7 @@
 package cn.t1tan.rules
 
 import java.util.Map;
-import cn.t1tan.auth.comm.Message
+import cn.t1tan.auth.comm.AuthMessage
 import cn.t1tan.auth.comm.AuthContext
 import cn.t1tan.auth.enums.AuthReason
 import cn.t1tan.auth.enums.AuthReason
@@ -11,7 +11,7 @@ global org.slf4j.Logger log
 rule "[Message_001] 卡号是否上送"
 	when
 		context : AuthContext( checkPointList contains "Message_001" )
-		Message (!exist("b002"))
+		AuthMessage (!exist("b002"))
 	then
 	    log.info("命中[Message_001],卡号未上送");
 		context.getAuthReasonMap().put(AuthReason.R005, "Message_001");
@@ -20,7 +20,7 @@ end
 rule "[Message_002] 金额是否上送"
 	when
 		context : AuthContext( checkPointList contains "Message_002" )
-		Message (!exist("b004"))
+		AuthMessage (!exist("b004"))
 	then
 	    log.info("命中[Message_002],金额未上送");
 		context.getAuthReasonMap().put(AuthReason.R005, "Message_002");

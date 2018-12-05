@@ -11,9 +11,9 @@ import java.util.Map;
  * @create: 2018-11-21
  **/
 @Data
-public class Message {
+public class AuthMessage {
 
-	public Message(Map<String, Object> message) {
+	public AuthMessage(Map<String, Object> message) {
 		this.mti = (String) message.get("messageType");
 		this.message = message;
 	}
