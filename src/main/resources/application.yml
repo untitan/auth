@@ -1,9 +1,0 @@
-drools:
-  is-db: false
-  rule-files:
-  - key: cupKieBase
-    value: cup-rules.xlsx
-  - key: messageKieBase
-    value: message.drl
-  - key: txnKieBase
-    value: txn.drl
