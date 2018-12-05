@@ -1,0 +1,18 @@
+package cn.t1tan.rules
+
+import java.util.Map;
+import cn.t1tan.auth.comm.Message
+import cn.t1tan.auth.comm.AuthContext
+import cn.t1tan.auth.enums.AuthReason
+import cn.t1tan.auth.enums.AuthReason
+
+global org.slf4j.Logger log
+
+rule "[Txn_001] 卡号是否上送"
+	when
+		context : AuthContext( checkPointList contains "Txn_001" )
+		AuthContext(txnCode == null)
+	then
+	    log.info("命中[Txn_001], 交易码为空");
+		context.getAuthReasonMap().put(AuthReason.R005, "Txn_001");
+end
